@@ -3,18 +3,18 @@ from celery import shared_task
 
 from clients.ravi import RaviClient
 from clients.telegram import Telegram
-from coverd_call.models import CoverdCallDynamicConfig, CoverdCallOptions
+from option.models import CoverdCallDynamicConfig, CoverdCallOptions
 
 
-@shared_task(name='get-ravi-option')
+@shared_task(name="get-ravi-option")
 def get_ravi_option():
     telegram_client = Telegram
     config = CoverdCallDynamicConfig.objects.first()
     client = RaviClient(token=config.token)
-    response = client.get_options(
+    response = client.get_covert_call(
         delta=config.delta, minimum_profit=config.minimum_profit
     )
-    options_data = client.parse_option_data(response)
+    options_data = client.parse_covert_call_option_data(response)
     coverd_call_options_list = []
     for item in options_data:
         coverd_call_options_list.append(

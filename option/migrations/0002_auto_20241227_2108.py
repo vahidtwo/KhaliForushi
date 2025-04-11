@@ -6,14 +6,13 @@ from django.db import migrations
 def init_data(apps, label):
     CoverdCallDynamicConfig = apps.get_model("coverd_call", "CoverdCallDynamicConfig")
     CoverdCallDynamicConfig.objects.create(
-        token="Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwaG9uZV9udW1iZXIiOiIwOTEyODE4ODU5MSIsImV4cGlyZV9hdCI6IjIyLzAxLzI1In0.gKT9qnYAZmeI65lhm2mtw4j0QXqP2-mzaLcovQqfv4Y")
+        token="Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwaG9uZV9udW1iZXIiOiIwOTEyODE4ODU5MSIsImV4cGlyZV9hdCI6IjIyLzAxLzI1In0.gKT9qnYAZmeI65lhm2mtw4j0QXqP2-mzaLcovQqfv4Y"
+    )
 
 
 class Migration(migrations.Migration):
     dependencies = [
-        ("coverd_call", "0001_initial"),
+        ("option", "0001_initial"),
     ]
 
-    operations = [
-        migrations.RunPython(init_data, migrations.RunPython.noop)
-    ]
+    operations = [migrations.RunPython(init_data, migrations.RunPython.noop)]

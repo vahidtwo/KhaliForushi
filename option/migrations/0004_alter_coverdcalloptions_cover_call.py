@@ -4,9 +4,8 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ("coverd_call", "0003_coverdcalloptions_strick_price"),
+        ("option", "0003_coverdcalloptions_strick_price"),
     ]
 
     operations = [

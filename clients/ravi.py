@@ -32,7 +32,7 @@ class RaviClient:
     def __init__(self, token):
         self.token = token
 
-    def get_options(self, delta, minimum_profit):
+    def get_covert_call(self, delta, minimum_profit):
         query = """
         query CoverdCallStrategy($after: String, $first: Int, $orderBy: String, $baseSecurity_Ticker_In: [String], $data_Delta_Gte: Float, $endDate_Gte: Date, $endDate_Lte: Date, $strickPriceDiffWithBasePriceRange: RangeInput, $coverCallGte: Int, $coverCallFinalPriceDiffPercentByBasePriceRange: RangeInput, $coverCallVolumeGte: BigInt) {
   options(
@@ -118,7 +118,7 @@ class RaviClient:
         return requests.post(url=self.url, json=data)
 
     @staticmethod
-    def parse_option_data(response) -> list[RaviOptionsDataclass]:
+    def parse_covert_call_option_data(response) -> list[RaviOptionsDataclass]:
         data = response.json()
         options = data["data"]["options"]["edges"]
         options_data = []
