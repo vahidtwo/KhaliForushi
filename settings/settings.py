@@ -9,8 +9,10 @@ https://docs.djangoproject.com/en/4.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
-
 from pathlib import Path
+
+from celery.schedules import crontab
+from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -122,3 +124,15 @@ STATIC_URL = "static/"
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+
+# Celery
+CELERY_BROKER_URL = config("CELERY_BROKER_URL", None)
+
+CELERY_TIMEZONE = TIME_ZONE
+CELERY_BEAT_SCHEDULE = {
+    "get-ravi-option": {
+        "task": "get-ravi-option",
+        "schedule": crontab(minute="*/2"),
+    },
+}

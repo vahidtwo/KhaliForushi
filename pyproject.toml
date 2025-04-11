@@ -1,0 +1,17 @@
+[project]
+name = "khaliforushi"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "celery>=5.4.0",
+    "django>=5.1.7",
+    "django-celery-beat>=2.7.0",
+    "gevent>=24.11.1",
+    "jdatetime>=5.2.0",
+    "python-decouple>=3.8",
+    "python-telegram-bot>=22.0",
+    "redis>=5.2.1",
+    "requests>=2.32.3",
+]

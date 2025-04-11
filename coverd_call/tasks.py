@@ -6,7 +6,7 @@ from clients.telegram import Telegram
 from coverd_call.models import CoverdCallDynamicConfig, CoverdCallOptions
 
 
-@shared_task
+@shared_task(name='get-ravi-option')
 def get_ravi_option():
     telegram_client = Telegram
     config = CoverdCallDynamicConfig.objects.first()
